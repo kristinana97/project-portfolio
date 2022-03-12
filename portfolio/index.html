@@ -14,7 +14,7 @@
     <link rel="icon" href="./assets/favicon/bg.ico" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body>
+  <body class="body">
     <header class="header">
       <div class="wrapper header__wrapper">
         <a class="logo" href="#">
@@ -23,32 +23,45 @@
         <nav class="header__navigation">
           <ul class="navigation">
             <li class="navigation__item">
-              <a href="#skills" class="navigation__item_link">Skills</a>
+              <a href="#skills" class="navigation__item_link" data-i18="skills"
+                >Skills</a
+              >
             </li>
             <li class="navigation__link">
-              <a href="#portfolio" class="navigation__item_link">Portfolio</a>
+              <a
+                href="#portfolio"
+                class="navigation__item_link"
+                data-i18="portfolio"
+                >Portfolio</a
+              >
             </li>
             <li class="navigation__link">
-              <a href="#video" class="navigation__item_link">Video</a>
+              <a href="#video" class="navigation__item_link" data-i18="video"
+                >Video</a
+              >
             </li>
             <li class="navigation__link">
-              <a href="#price" class="navigation__item_link">Price</a>
+              <a href="#price" class="navigation__item_link" data-i18="price"
+                >Price</a
+              >
             </li>
             <li class="navigation__link">
-              <a href="#contacts" class="navigation__item_link">Contacts</a>
+              <a
+                href="#contacts"
+                class="navigation__item_link"
+                data-i18="contacts"
+                >Contacts</a
+              >
             </li>
           </ul>
-          <div class="form_toggle nav-list">
-            <div class="form_toggle-item item-1">
-              <input id="fid-1" type="radio" name="radio" value="on" checked />
-              <label for="fid-1">en</label>
-            </div>
-            <span>/</span>
-            <div class="form_toggle-item item-2">
-              <input id="fid-2" type="radio" name="radio" value="off" />
-              <label for="fid-2">ru</label>
-            </div>
+          <div class="lang">
+            <button class="lang__item en lang__item_active" data-lang="en">
+              en
+            </button>
+            <span class="lang__slash">/</span>
+            <button class="lang__item ru" data-lang="ru">ru</button>
           </div>
+          <div class="theme"></div>
         </nav>
         <div class="hamburger">
           <span class="line line1"></span>
@@ -61,13 +74,15 @@
       <section class="hero" id="hero">
         <div class="wrapper hero__wrapper">
           <div class="hero__content">
-            <h1 class="hero__title">Alexa Rise</h1>
-            <p class="hero__text">
+            <h1 class="hero__title" data-i18="hero-title">Alexa Rise</h1>
+            <p class="hero__text" data-i18="hero-text">
               Save sincere emotions, romantic feelings and happy moments of life
               together with professional photographer Alexa Rise
             </p>
             <div class="hero__button">
-              <button class="button button_colored">Hire me</button>
+              <button class="button button_colored" data-i18="hire">
+                Hire me
+              </button>
             </div>
           </div>
         </div>
@@ -76,19 +91,20 @@
       <section class="skills" id="skills">
         <div class="wrapper skills__wrapper">
           <div class="section-title__wrapper">
-            <h2 class="section__title">Skills</h2>
+            <h2 class="section__title" data-i18="skills">Skills</h2>
           </div>
           <div class="layout-4-column">
             <!-- будет добавлять 4ех колоночный элемент который в последствии мы сможем использовать -->
-
             <div class="skill">
               <div class="skill__icon">
                 <span class="icon-square">
                   <span class="ico ico_camera"></span>
                 </span>
               </div>
-              <h4 class="skill__title">Digital photography</h4>
-              <p class="skill__text">
+              <h4 class="skill__title" data-i18="skill-title-1">
+                Digital photography
+              </h4>
+              <p class="skill__text" data-i18="skill-text-1">
                 High-quality photos in the studio and on the nature
               </p>
             </div>
@@ -99,8 +115,10 @@
                   <span class="ico ico_video"></span>
                 </span>
               </div>
-              <h4 class="skill__title">Video shooting</h4>
-              <p class="skill__text">
+              <h4 class="skill__title" data-i18="skill-title-2">
+                Video shooting
+              </h4>
+              <p class="skill__text" data-i18="skill-text-2">
                 Capture your moments so that they always stay with you
               </p>
             </div>
@@ -111,8 +129,8 @@
                   <span class="ico ico_picture"></span>
                 </span>
               </div>
-              <h4 class="skill__title">Retouch</h4>
-              <p class="skill__text">
+              <h4 class="skill__title" data-i18="skill-title-3">Retouch</h4>
+              <p class="skill__text" data-i18="skill-text-3">
                 I strive to make photography surpass reality
               </p>
             </div>
@@ -123,8 +141,8 @@
                   <span class="ico ico_microphone"></span>
                 </span>
               </div>
-              <h4 class="skill__title">Audio</h4>
-              <p class="skill__text">
+              <h4 class="skill__title" data-i18="skill-title-4">Audio</h4>
+              <p class="skill__text" data-i18="skill-text-4">
                 Professional sounds recording for video, advertising, portfolio
               </p>
             </div>
@@ -135,43 +153,67 @@
       <section class="portfolio" id="portfolio">
         <div class="wrapper portfolio__wrapper">
           <div class="section-title__wrapper">
-            <h2 class="section__title">Portfolio</h2>
+            <h2 class="section__title" data-i18="portfolio">Portfolio</h2>
           </div>
           <div class="portfolio__buttons buttons">
-            <button class="button button_bordered">Winter</button>
-            <button class="button button_bordered">Spring</button>
-            <button class="button button_bordered">Summer</button>
-            <button class="button button_colored">Autumn</button>
+            <button
+              class="portfolio__button"
+              data-season="winter"
+              data-i18="winter"
+            >
+              Winter
+            </button>
+            <button
+              class="portfolio__button"
+              data-season="spring"
+              data-i18="spring"
+            >
+              Spring
+            </button>
+            <button
+              class="portfolio__button"
+              data-season="summer"
+              data-i18="summer"
+            >
+              Summer
+            </button>
+            <button
+              class="portfolio__button"
+              data-season="autumn"
+              data-i18="autumn"
+            >
+              Autumn
+            </button>
           </div>
-          <div class="gallery-wrapper">
-            <div class="gallery">
+          <div class="portfolio-image__wrapper">
+            <div class="portfolio-images">
               <img
-                class="gallery__image"
+                class="portfolio-image"
                 src="./assets/img/portfolio-img/portfolio-img(1).jpg"
                 alt="gallery photo"
               />
               <img
-                class="gallery__image"
+                class="portfolio-image"
                 src="./assets/img/portfolio-img/portfolio-img(2).jpg"
                 alt="gallery photo"
               />
               <img
-                class="gallery__image"
+                class="portfolio-image"
                 src="./assets/img/portfolio-img/portfolio-img(3).jpg"
                 alt="gallery photo"
               />
               <img
-                class="gallery__image"
+                class="portfolio-image"
                 src="./assets/img/portfolio-img/portfolio-img(4).jpg"
                 alt="gallery photo"
               />
               <img
-                class="gallery__image"
+                class="portfolio-image"
                 src="./assets/img/portfolio-img/portfolio-img(5).jpg"
                 alt="gallery photo"
               />
               <img
-                class="gallery__image"
+                class="portfolio-image"
                 src="./assets/img/portfolio-img/portfolio-img(6).jpg"
                 alt="gallery photo"
               />
@@ -183,7 +225,7 @@
       <section class="video" id="video">
         <div class="video__wrapper">
           <div class="section-title__wrapper">
-            <h2 class="section__title">Video</h2>
+            <h2 class="section__title" data-i18="video">Video</h2>
           </div>
           <div class="video-player__wrapper">
             <button class="video-player__button" type="button">
@@ -207,21 +249,41 @@
       <section class="price" id="price">
         <div class="wrapper price__wrapper">
           <div class="section-title__wrapper">
-            <h2 class="section__title">Price</h2>
+            <h2 class="section__title" data-i18="price">Price</h2>
           </div>
           <div class="layout-4-column">
             <div class="price-description">
               <div class="price-description__content">
                 <h3 class="price-description__title">Standard</h3>
                 <p class="price-description__cost">500 $</p>
-                <span class="price-description__text">One location</span>
-                <span class="price-description__text">120 photos in color</span>
-                <span class="price-description__text"
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-1-span-1"
+                  >One location</span
+                >
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-1-span-2"
+                  >120 photos in color</span
+                >
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-1-span-3"
                   >12 photos in retouch</span
                 >
-                <span class="price-description__text">Readiness 2-3 weeks</span>
-                <span class="price-description__text">Make up, visage</span>
-                <button class="button button_colored">Order shooting</button>
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-1-span-4"
+                  >Readiness 2-3 weeks</span
+                >
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-1-span-5"
+                  >Make up, visage</span
+                >
+                <button class="button button_colored" data-i18="order">
+                  Order shooting
+                </button>
               </div>
             </div>
 
@@ -229,16 +291,34 @@
               <div class="price-description__content">
                 <h3 class="price-description__title">Premium</h3>
                 <p class="price-description__cost">700 $</p>
-                <span class="price-description__text"
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-2-span-1"
                   >One or two locations</span
                 >
-                <span class="price-description__text">200 photos in color</span>
-                <span class="price-description__text"
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-2-span-2"
+                  >200 photos in color</span
+                >
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-2-span-3"
                   >20 photos in retouch</span
                 >
-                <span class="price-description__text">Readiness 1-2 weeks</span>
-                <span class="price-description__text">Make up, visage</span>
-                <button class="button button_colored">Order shooting</button>
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-2-span-4"
+                  >Readiness 1-2 weeks</span
+                >
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-2-span-5"
+                  >Make up, visage</span
+                >
+                <button class="button button_colored" data-i18="order">
+                  Order shooting
+                </button>
               </div>
             </div>
 
@@ -246,18 +326,34 @@
               <div class="price-description__content">
                 <h3 class="price-description__title">Gold</h3>
                 <p class="price-description__cost">1000 $</p>
-                <span class="price-description__text"
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-3-span-1"
                   >Three locations or more</span
                 >
-                <span class="price-description__text">300 photos in color</span>
-                <span class="price-description__text"
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-3-span-2"
+                  >300 photos in color</span
+                >
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-3-span-3"
                   >50 photos in retouch</span
                 >
-                <span class="price-description__text">Readiness 1 week</span>
-                <span class="price-description__text"
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-3-span-4"
+                  >Readiness 1 week</span
+                >
+                <span
+                  class="price-description__text"
+                  data-i18="price-description-3-span-5"
                   >Make up, visage, hairstyle</span
                 >
-                <button class="button button_colored">Order shooting</button>
+                <button class="button button_colored" data-i18="order">
+                  Order shooting
+                </button>
               </div>
             </div>
           </div>
@@ -267,7 +363,9 @@
       <section class="contacts" id="contacts">
         <div class="contacts__wrapper">
           <div class="contacts-content">
-            <h2 class="section__title">Contact me</h2>
+            <h2 class="section__title-contacts" data-i18="contact-me">
+              Contact me
+            </h2>
             <div class="contacts-form">
               <input type="text" name="email" placeholder="E-mail" />
               <input type="text" name="phone" placeholder="Phone" />
@@ -277,7 +375,9 @@
                 rows="10"
                 placeholder="Message"
               ></textarea>
-              <button class="button button_colored">Send message</button>
+              <button class="button button_colored" data-i18="send-message">
+                Send message
+              </button>
             </div>
           </div>
         </div>
