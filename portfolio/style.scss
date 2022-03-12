@@ -96,13 +96,7 @@ html {
     font-size: 10px;
     scroll-behavior: smooth;
 }
-body {
-    min-height: 100vh;
-    text-rendering: optimizeSpeed;
-    @extend %font-prim;
-    @include font(1.6rem, 400, 2.6rem, $color-dark);
-    background-color: $color-dark
-}
+
 h1 {
     @extend %font-add;
     @include font(6.0rem, 700, 12rem, $color-white);
@@ -111,7 +105,18 @@ h1 {
         @include font(3.2rem, 400, 6.4rem, $color-white);
     }
 }
-h2 {
+.body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    @extend %font-prim;
+    @include font(1.6rem, 400, 2.6rem, $color-white);
+    background-color: $color-dark;
+}
+.body.light {
+    background-color: $color-white;
+    @include font(1.6rem, 400, 2.6rem, $color-dark);
+}
+.section__title {
     @extend %font-add;
     @include font(4.0rem, 700, 8.0rem, $color-gold);
     padding: 0 20px 0 20px;
@@ -119,16 +124,14 @@ h2 {
      
     @include media-tablet {
         @include font(3.2rem, 700, 8.0rem, $color-gold);
-
     }
 }
-h3 {
-    @extend %font-add;
-    @include font(2.8rem, 700, 5.6rem, $color-white);
-}
-h4 {
-    @extend %font-prim;
-    @include font(2.0rem, 700, 4.0rem, $color-white);
+.section__title.light {
+    @include font(4.0rem, 700, 8.0rem, $color-dark);
+    background: $color-white;
+    @include media-tablet {
+        @include font(3.2rem, 700, 8.0rem, $color-dark);
+    }
 }
 .section-title__wrapper {
     width: 50%;
@@ -140,6 +143,10 @@ h4 {
     background-image: linear-gradient(to top, #000 39px, #bdae82 39px, #bdae82 41px, #000 41px);  
     overflow: hidden;
 }
+.section-title__wrapper.light {
+    background-image: linear-gradient(to top, #fff 39px, #000 39px, #000 41px, #fff 41px);  
+}
+
 .wrapper {
     overflow: hidden;
   max-width: $content-width; 
@@ -154,7 +161,7 @@ h4 {
     padding: 0 20px; 
   }
 }
-.button, .button-color {
+.button {
     font-family: inherit;
     font-size: 2.0rem;
     font-weight: 400;
@@ -165,23 +172,22 @@ h4 {
     width: 220px;
     height: 55px;
     overflow: hidden;
-
     &_colored {
         background: $color-gold;
         border: 2px solid $color-gold;
         &:hover {
+            box-shadow: 0 0.5em 0.5em -0.4em #ffa260;
+	        transform: translatey(-0.65em);
             color: $color-white;
         }
-    }
-    &_bordered {
-        background: $color-dark;
-        border: 2px solid $color-gold;
-        color: $color-gold;
-        &:hover {
-            color: $color-white;
+        &:focus {
+            box-shadow: 0 0.5em 0.5em -0.4em #ffa260;
+	        transform: translatey(-0.65em);
         }
     }
 }
+
+
 .layout-4-column {
      @include columns($width: 25%);
      @include media-tablet {
@@ -203,14 +209,12 @@ h4 {
 
 
 
-
 }
 
 // ----------------------HEADER-----------------------------
 
 .header {
     overflow: hidden;
-
     max-width: 1440px;
     margin: 0 auto;
     background-image: url("../assets/img/bg.jpg");
@@ -249,6 +253,7 @@ h4 {
     margin-left: auto;
     margin-right: 15px;
     align-items: center;
+    padding-right: 10px;
 }
 .navigation {
     overflow-x: hidden;
@@ -301,7 +306,9 @@ h4 {
         background-color: $color-dark;
     }
 }
-
+.open.light {
+    background-color: $color-white;
+}
 .navigation__item {
     list-style: none;
     cursor: pointer;
@@ -320,37 +327,58 @@ h4 {
         color: $color-gold;
     }
 }
+.navigation__item_link.light {
+    @include media-tablet {
+        color: $color-dark;
 
-
-.form_toggle .item-1 input[type=radio]:checked + label, .item-2 input[type=radio]:checked + label {
-	background: transparent;
-    color: $color-gold;
-
+    }
 }
-.form_toggle {
+.lang__item {
+    background: transparent;
+    color: $color-white;
+    border: none;
     font-weight: 700;
     font-size: 2.0rem;
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+        color: $color-gold;
+    }
+}
+.lang__item_active {
+    background: transparent;
+    color: $color-gold;
+    border: none;
+    font-weight: 700;
+    font-size: 2.0rem;
+    cursor: pointer;
+}
+.lang__slash {
     color: $color-white;
 }
-.form_toggle-item {
-    display: inline-block;
 
-    input[type=radio] {
-        display: none;
+.theme {
+    cursor: pointer;
+    @extend %transition;
+    background-image: url('../assets/svg/sun.svg');
+    width: 45px;
+    height: 45px;
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    &:hover {
+        filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
     }
-    label {
-        cursor: pointer;
-    }
 }
-.item-1 {
-    padding: 0px 9px 0px 0px;
+.theme.light {
+    background-image: url('../assets/svg/moon.svg');
+    width: 41px;
+    height: 40px;
+    background-repeat: no-repeat;
+    margin-left: 24px;
 }
-.item-2 {
-    padding: 0px 0px 0px 8px;
-}
-
-
-
+// .moon {
+ 
+// }
 .hamburger {
     display: none;
     &:hover {
@@ -439,7 +467,6 @@ padding: 160px 0 360px 80px ;
 
 .skills {
     overflow: hidden;
-
     padding-top: 70px;
   @include media-mobile {
     padding-top: 60px;
@@ -459,13 +486,25 @@ padding: 160px 0 360px 80px ;
 }
 .skill__title {
     margin: 0 0 20px;
-    text-align: center
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 2.0rem;
+    font-weight: 700;
+    line-height: 4.0rem;
+    color: $color-white;
 }
+.skill__title.light {
+    color: $color-dark;
+}
+
 .skill__text {
     @extend %font-prim;
     @include font(1.8rem, 400, 3.6rem, $color-white);
     text-align: center;
     width: 280px;
+}
+.skill__text.light {
+    @include font(1.8rem, 400, 3.6rem, $color-dark);
 }
 .ico {
     cursor: pointer;
@@ -534,7 +573,79 @@ padding: 160px 0 360px 80px ;
     }
     
 }
-.gallery {
+.portfolio__button {
+    font-family: inherit;
+    font-size: 2.0rem;
+    font-weight: 400;
+    line-height: 4.0rem;
+    cursor: pointer;
+    transition: all .3s;
+    width: 220px;
+    height: 55px;
+    overflow: hidden;
+    background: $color-dark;
+    border: 2px solid $color-gold;
+    color: $color-gold;
+    &:hover {
+        box-shadow: 0 0.5em 0.5em -0.4em #ffa260;
+        transform: translatey(-0.65em);
+        color: $color-white;
+    }
+    &:focus {
+        box-shadow: 0 0.5em 0.5em -0.4em #ffa260;
+        transform: translatey(-0.65em);
+    }
+}
+.portfolio__button.light {
+    background: $color-white;
+    color: $color-dark;
+}
+.active-btn {
+    font-family: inherit;
+    font-size: 2.0rem;
+    font-weight: 400;
+    line-height: 4.0rem;
+    cursor: pointer;
+    transition: all .3s;
+    width: 220px;
+    height: 55px;
+    overflow: hidden;
+    background: $color-gold;
+    border: 2px solid $color-gold;
+    color: $color-dark;
+    &:hover {
+        box-shadow: 0 0.5em 0.5em -0.4em #ffa260;
+        transform: translatey(-0.65em);
+    }
+    &:focus {
+        box-shadow: 0 0.5em 0.5em -0.4em #ffa260;
+        transform: translatey(-0.65em);
+    }
+}
+.active-btn.light {
+    font-family: inherit;
+    font-size: 2.0rem;
+    font-weight: 400;
+    line-height: 4.0rem;
+    cursor: pointer;
+    transition: all .3s;
+    width: 220px;
+    height: 55px;
+    overflow: hidden;
+    background: $color-gold;
+    border: 2px solid $color-gold;
+    color: $color-white;
+    &:hover {
+        box-shadow: 0 0.5em 0.5em -0.4em #ffa260;
+        transform: translatey(-0.65em);
+    }
+    &:focus {
+        box-shadow: 0 0.5em 0.5em -0.4em #ffa260;
+        transform: translatey(-0.65em);
+    }
+}
+
+.portfolio-images {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
@@ -661,8 +772,14 @@ padding: 160px 0 360px 80px ;
     }
    
 }
+
 .price-description__title {
+    @extend %font-add;
+    @include font(2.8rem, 700, 5.6rem, $color-white);
     padding-top: 43px;
+}
+.price-description__title.light {
+    @include font(2.8rem, 700, 5.6rem, $color-dark);
 }
 .price-description__cost {
         @extend %font-add;
@@ -674,7 +791,10 @@ padding: 160px 0 360px 80px ;
     @extend %font-prim;
     @include font(1.8rem, 400, 3.6rem, $color-white);
 }
+.price-description__text.light {
+    @include font(1.8rem, 400, 3.6rem, $color-dark);
 
+}
 // ----------------CONTACTS------------------
 
 .contacts {
@@ -702,6 +822,16 @@ padding: 160px 0 360px 80px ;
         width: 100%;
     }
 }
+.section__title-contacts {
+    @extend %font-add;
+    @include font(4.0rem, 700, 8.0rem, $color-gold);
+    padding: 0 20px 0 20px;
+    background: #000000;
+     
+    @include media-tablet {
+        @include font(3.2rem, 700, 8.0rem, $color-gold);
+    }
+}
 .contacts-content {
     width: 450px;
     height: 445px;
@@ -709,7 +839,7 @@ padding: 160px 0 360px 80px ;
     flex-direction: column;
     margin-left: auto;
     margin-right: 20px;
-    .section__title {
+    .section__title-contacts {
         background: transparent;
         padding-top: 30px;
         padding-bottom: 5px;
@@ -768,7 +898,11 @@ padding: 160px 0 360px 80px ;
     overflow: hidden;
     padding: 50px 0 50px;
     margin: 0 auto;
+    max-width: 1440px;
 }
+.footer.light {
+    background-color: $color-dark;
+    }
 .footer__wrapper {
     font-family: 'Inter', sans-serif;
     font-weight: 400; 
@@ -792,6 +926,7 @@ padding: 160px 0 360px 80px ;
         }
     }
 }
+
 .footer-data {
    
     ul {
@@ -855,3 +990,6 @@ padding: 160px 0 360px 80px ;
     width: 32px;
     height: 32px;
 }
+
+
+
